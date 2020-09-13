@@ -11,6 +11,22 @@
         alert("Your latitude is: " + num2.toString());
         var num3 = document.getElementById("radius").value;
         alert("Your radius is: " + num3.toString() + " meters");
+        
+        
+        var ee = require('@google/earthengine');
+
+// Authenticate using one (but not both) of the methods below.
+ee.data.authenticateViaOauth("116876742604213294377");
+ee.data.authenticateViaPrivateKey("\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDowLGBCUHm0QMj\nHT2gf/yhPfVSXmA7DvjT4/csiN5o3cJuSQT8P+X2TjumblcIHaliEh1mlBG1CNjs\n0fKs3IrrQrT6gekK6VfYqbCrwu0QxOrxPzLkIOlnFfAna9SVgixvXE3Vz6LgdwJJ\nvYXGVGck3RNnLGwJ10Dxc8OGJcfCX6OALoGbusGYqwA5MtJjELU/uS7TCkWSCRE/\n2u8GpokcZ42eVsl/N76ytHWCnDAviqHKYhcZSQ59i9b96f1DNf7gBpCO1Sc56q1o\nkPb3MCq9qVOtOmcyvFUQEikot9mYeUu563fNJr8H7LwlEZZVifLDELcbnPK/gpc5\nkbj2HPRxAgMBAAECggEASLO//lVc73NELpi4okS4LcmDspnmJyxzDwS7NX7/MfRr\nAjXux7hR5ZDkUwVOTCuvuAF+i4cezNSZpceirNoqznfEvicMGytuFDBVDiHSGRXZ\naUfbZqTdIyUYIcgt3BGQPaywZ2P3NXQXE9+ORLgii8I+iFC44o4JLCKD5YgxkIXk\nq3azpdlzLSLU/HMPMI1oLcg4QUUsHeJaC/Y31L4t1lRWJutMbisnRtixnpvRtt0R\nuDCg0TxTh9zxwRuUSypIPnuJw+MWHeJIvtGujyhufLniJwOkGw6lgeMFYAKi8F2M\ntHx4J0igNlxrytnHhAB389wT2sPK/f6x52W4LLgx7QKBgQD6AT0qQKQKxeu8RGQ5\neGS/tft1gjcF+bNl/3gt2za88ZkMB9PGfAMyH/SlXlgCDH0FRl2GQnEK2GCsUgC+\nShg09TDIQkChFOPMIftCV4jk/s7IFIwexjSxxr6v2OXzHp2vYfr9+Y0mbfnJBclN\nHPd2YADBgpBBnHn0ADRf7GPfEwKBgQDuVYt+vcGAWr6J4ixbBPNoC");
+
+ee.initialize();
+
+// Run an Earth Engine script.
+var image = new ee.Image('srtm90_v4');
+image.getMap({min: 0, max: 1000}, function(map) {
+  console.log(map);
+});
+        
       }
 
     </script>
